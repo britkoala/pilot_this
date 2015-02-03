@@ -13,6 +13,7 @@
 		7F22333D1A8140E3007A7B65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22333C1A8140E3007A7B65 /* Images.xcassets */; };
 		7F2233401A8140E3007A7B65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F22333E1A8140E3007A7B65 /* LaunchScreen.xib */; };
 		7F22334C1A8140E3007A7B65 /* Pilot_thisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22334B1A8140E3007A7B65 /* Pilot_thisTests.swift */; };
+		CC9B1EF81A8161DF00A136A9 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9B1EF71A8161DF00A136A9 /* graph.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7F2233451A8140E3007A7B65 /* Pilot thisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pilot thisTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22334A1A8140E3007A7B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F22334B1A8140E3007A7B65 /* Pilot_thisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pilot_thisTests.swift; sourceTree = "<group>"; };
+		CC9B1EF71A8161DF00A136A9 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				7F2233371A8140E3007A7B65 /* ViewController.swift */,
 				7F2233391A8140E3007A7B65 /* Main.storyboard */,
 				7F22333C1A8140E3007A7B65 /* Images.xcassets */,
+				CC9B1EF71A8161DF00A136A9 /* graph.png */,
 				7F22333E1A8140E3007A7B65 /* LaunchScreen.xib */,
 				7F2233331A8140E3007A7B65 /* Supporting Files */,
 			);
@@ -194,6 +197,7 @@
 			files = (
 				7F22333B1A8140E3007A7B65 /* Main.storyboard in Resources */,
 				7F2233401A8140E3007A7B65 /* LaunchScreen.xib in Resources */,
+				CC9B1EF81A8161DF00A136A9 /* graph.png in Resources */,
 				7F22333D1A8140E3007A7B65 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +409,7 @@
 				7F2233511A8140E3007A7B65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F2233521A8140E3007A7B65 /* Build configuration list for PBXNativeTarget "Pilot thisTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				7F2233541A8140E3007A7B65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
