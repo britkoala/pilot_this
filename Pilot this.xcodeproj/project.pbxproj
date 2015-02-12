@@ -97,7 +97,10 @@
 				7F2233371A8140E3007A7B65 /* ViewController.swift */,
 				CC9B1EFB1A816A8000A136A9 /* DetailsViewController.swift */,
 				7F2233391A8140E3007A7B65 /* Main.storyboard */,
+				7F61D1A91A8BEF75000D9DED /* NewViewController.swift */,
 				7F22333C1A8140E3007A7B65 /* Images.xcassets */,
+				7F61D1A71A8BE76A000D9DED /* laptopcase.png */,
+				7F61D1A51A8BE385000D9DED /* crocs.jpg */,
 				CC9B1EF71A8161DF00A136A9 /* graph.png */,
 				CC9B1EF91A81691B00A136A9 /* scale.png */,
 				7F22333E1A8140E3007A7B65 /* LaunchScreen.xib */,
@@ -230,6 +233,8 @@
 				7F2233401A8140E3007A7B65 /* LaunchScreen.xib in Resources */,
 				CC9B1EFA1A81691B00A136A9 /* scale.png in Resources */,
 				CC9B1EF81A8161DF00A136A9 /* graph.png in Resources */,
+				7F61D1A81A8BE76A000D9DED /* laptopcase.png in Resources */,
+				7F61D1A61A8BE385000D9DED /* crocs.jpg in Resources */,
 				7F22333D1A8140E3007A7B65 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +259,7 @@
 				7F2233361A8140E3007A7B65 /* AppDelegate.swift in Sources */,
 				CC7048381A8BEC7B000795DF /* JBChartView.m in Sources */,
 				CC9B1EFC1A816A8000A136A9 /* DetailsViewController.swift in Sources */,
+				7F61D1AA1A8BEF75000D9DED /* NewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
