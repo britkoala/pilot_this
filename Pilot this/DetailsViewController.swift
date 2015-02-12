@@ -8,21 +8,75 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JBLineChartViewDataSource, JBLineChartViewDelegate {
 
     @IBOutlet weak var levelSlider: UISlider!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var chartView: UIView!
+    
+    var lineChartView: JBLineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        lineChartView = JBLineChartView()
+        lineChartView.dataSource = self
+        lineChartView.delegate = self
+        self.chartView.addSubview(lineChartView)
+        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width+50, chartView.frame.height)
+        lineChartView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // JBLineChartViewDataSource
+    func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
+        return 1
+    }
+    
+    func lineChartView(lineChartView: JBLineChartView!, numberOfVerticalValuesAtLineIndex lineIndex: UInt) -> UInt {
+        return 7
+    }
+    
+    // END:JBLineChartViewDataSource
+    
+    
+    
+    // JBLineChartViewDelegate
+    
+    func lineChartView(lineChartView: JBLineChartView!, verticalValueForHorizontalIndex horizontalIndex: UInt, atLineIndex lineIndex: UInt) -> CGFloat {
+        
+        var value: CGFloat
+        
+        switch(horizontalIndex){
+            
+        case 0: value = 50
+        case 1: value = 100
+        case 2: value = 75
+        case 5: value = 75
+        default: value = 100
+            
+        }
+        
+        return value
+        
+    }
+    
+    func lineChartView(lineChartView: JBLineChartView!, widthForLineAtLineIndex lineIndex: UInt) -> CGFloat {
+        return 2
+    }
+    
+    func lineChartView(lineChartView: JBLineChartView!, smoothLineAtLineIndex lineIndex: UInt) -> Bool {
+        return true
+    }
+    
+    // END: JBLineChartViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -36,6 +90,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func levelSliderChanged(sender: AnyObject) {
         levelLabel.text = "\(Int(levelSlider.value))"
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        lineChartView.frame = CGRectMake(0, 0, size.width - 32, lineChartView.frame.height)
+        lineChartView.reloadData()
     }
     
     /*
