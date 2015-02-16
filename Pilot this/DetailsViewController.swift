@@ -25,8 +25,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         lineChartView.dataSource = self
         lineChartView.delegate = self
         self.chartView.addSubview(lineChartView)
-        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width+50, chartView.frame.height)
-        lineChartView.reloadData()
+//        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width+50, chartView.frame.height)
+//        lineChartView.reloadData()
         
     }
 
@@ -93,7 +93,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        lineChartView.frame = CGRectMake(0, 0, size.width - 32, lineChartView.frame.height)
+
+//        lineChartView.frame = CGRectMake(0, 0, size.width - 32, lineChartView.frame.height)
+//        lineChartView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width, chartView.frame.height)
         lineChartView.reloadData()
     }
     
