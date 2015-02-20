@@ -13,6 +13,7 @@
 		7F22333D1A8140E3007A7B65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F22333C1A8140E3007A7B65 /* Images.xcassets */; };
 		7F2233401A8140E3007A7B65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F22333E1A8140E3007A7B65 /* LaunchScreen.xib */; };
 		7F22334C1A8140E3007A7B65 /* Pilot_thisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22334B1A8140E3007A7B65 /* Pilot_thisTests.swift */; };
+		7F522EA51A97D75700EA6561 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F522EA41A97D75700EA6561 /* placeholder.jpg */; };
 		7F61D1A61A8BE385000D9DED /* crocs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F61D1A51A8BE385000D9DED /* crocs.jpg */; };
 		7F61D1A81A8BE76A000D9DED /* laptopcase.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F61D1A71A8BE76A000D9DED /* laptopcase.png */; };
 		7F61D1AA1A8BEF75000D9DED /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61D1A91A8BEF75000D9DED /* NewViewController.swift */; };
@@ -45,6 +46,7 @@
 		7F2233451A8140E3007A7B65 /* Pilot thisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pilot thisTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F22334A1A8140E3007A7B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F22334B1A8140E3007A7B65 /* Pilot_thisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pilot_thisTests.swift; sourceTree = "<group>"; };
+		7F522EA41A97D75700EA6561 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		7F61D1A51A8BE385000D9DED /* crocs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = crocs.jpg; sourceTree = "<group>"; };
 		7F61D1A71A8BE76A000D9DED /* laptopcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laptopcase.png; sourceTree = "<group>"; };
 		7F61D1A91A8BEF75000D9DED /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				7F2233391A8140E3007A7B65 /* Main.storyboard */,
 				7F61D1A91A8BEF75000D9DED /* NewViewController.swift */,
 				7F22333C1A8140E3007A7B65 /* Images.xcassets */,
+				7F522EA41A97D75700EA6561 /* placeholder.jpg */,
 				7F61D1A71A8BE76A000D9DED /* laptopcase.png */,
 				7F61D1A51A8BE385000D9DED /* crocs.jpg */,
 				CC9B1EF71A8161DF00A136A9 /* graph.png */,
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F22333B1A8140E3007A7B65 /* Main.storyboard in Resources */,
+				7F522EA51A97D75700EA6561 /* placeholder.jpg in Resources */,
 				7F2233401A8140E3007A7B65 /* LaunchScreen.xib in Resources */,
 				CC9B1EFA1A81691B00A136A9 /* scale.png in Resources */,
 				CC9B1EF81A8161DF00A136A9 /* graph.png in Resources */,
