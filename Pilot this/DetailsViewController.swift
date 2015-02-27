@@ -69,11 +69,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func lineChartView(lineChartView: JBLineChartView!, widthForLineAtLineIndex lineIndex: UInt) -> CGFloat {
-        return 2
+        return 4
     }
     
     func lineChartView(lineChartView: JBLineChartView!, smoothLineAtLineIndex lineIndex: UInt) -> Bool {
         return true
+    }
+    
+    func lineChartView(lineChartView: JBLineChartView!, colorForLineAtLineIndex lineIndex: UInt) -> UIColor! {
+        return UIColor.whiteColor()
     }
     
     // END: JBLineChartViewDelegate
@@ -86,7 +90,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         var cell = tableView.dequeueReusableCellWithIdentifier("CravingCell", forIndexPath: indexPath) as UITableViewCell
         return cell
     }
-    
     
     @IBAction func levelSliderChanged(sender: AnyObject) {
         levelLabel.text = "\(Int(levelSlider.value))"
