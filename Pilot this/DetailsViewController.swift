@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JBLineChartViewDataSource, JBLineChartViewDelegate {
 
@@ -85,6 +86,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //Fetching from persistent storage
     
+    var annotations = [NSManagedObject]()
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -95,7 +98,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let managedContext = appDelegate.managedObjectContext!
         
         //2
-        let fetchRequest = NSFetchRequest(entityName:"Person")
+        let fetchRequest = NSFetchRequest(entityName:"Annotation")
         
         //3
         var error: NSError?
@@ -105,7 +108,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             error: &error) as [NSManagedObject]?
         
         if let results = fetchedResults {
-            people = results
+            annotations = results
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
@@ -116,7 +119,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return annotations.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -125,7 +128,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var cell = tableView.dequeueReusableCellWithIdentifier("CravingCell", forIndexPath: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = "test"
+        //cell.textLabel?.text = "test"
+        
+        let annotation = annotations[indexPath.row]
+        cell.textLabel!.text = annotation.valueForKey("comment") as String?
         
         return cell
     }
