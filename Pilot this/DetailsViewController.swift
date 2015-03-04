@@ -153,6 +153,13 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         lineChartView.reloadData()
     }
     
+    @IBOutlet weak var addButton: UIButton!
+    
+    
+    @IBAction func sliderChanged(slider: UISlider) {
+        addButton.setTitle(Annotation.levelName(slider.value), forState: .Normal)
+    }
+    
     /*
     // MARK: - Navigation
 

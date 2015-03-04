@@ -15,5 +15,22 @@ class Annotation: NSManagedObject {
     @NSManaged var comment: String
     @NSManaged var created_at: NSDate
     @NSManaged var product: Product
+    
+    class func levelName(level: NSNumber) -> String {
+        switch level.integerValue {
+        case 0:
+            return "I barely need it"
+        case 1:
+            return "I kinda need it"
+        default:
+            println("Unsuported level found on class Annotation")
+            return ""
+        }
+    }
+    
+    func levelName() -> String {
+        return Annotation.levelName(level)
+    }
+    
 
 }

@@ -161,13 +161,13 @@
                                 </constraints>
                                 <connections>
                                     <action selector="levelSliderChanged:" destination="PL4-Nv-KcG" eventType="valueChanged" id="LsA-3h-rRv"/>
+                                    <action selector="sliderChanged:" destination="PL4-Nv-KcG" eventType="valueChanged" id="hJT-rA-MWc"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06k-Wo-3CS">
-                                <rect key="frame" x="16" y="257" width="40" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06k-Wo-3CS">
+                                <rect key="frame" x="16" y="257" width="344" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="F8K-jE-Tbj"/>
-                                    <constraint firstAttribute="width" constant="40" id="Lea-po-oSb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Add"/>
@@ -286,6 +286,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uUP-hd-0sV" secondAttribute="trailing" constant="-16" id="FYF-S9-wC0"/>
                             <constraint firstItem="RTt-oi-qJ4" firstAttribute="leading" secondItem="xil-nj-hIq" secondAttribute="leadingMargin" constant="-16" id="I9h-Sz-1jP"/>
                             <constraint firstItem="uUP-hd-0sV" firstAttribute="leading" secondItem="UWy-7k-amI" secondAttribute="trailing" constant="8" id="LLd-mv-Iqp"/>
+                            <constraint firstItem="daJ-va-kf1" firstAttribute="leading" secondItem="06k-Wo-3CS" secondAttribute="trailing" constant="8" id="SBR-PI-XHs"/>
                             <constraint firstItem="UWy-7k-amI" firstAttribute="leading" secondItem="daJ-va-kf1" secondAttribute="trailing" constant="8" id="VzR-il-ggX"/>
                             <constraint firstItem="uUP-hd-0sV" firstAttribute="top" secondItem="06k-Wo-3CS" secondAttribute="bottom" constant="8" id="WAa-21-Guz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="daJ-va-kf1" secondAttribute="trailing" constant="10" id="WrA-9I-YfG"/>
@@ -328,6 +329,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="06k-Wo-3CS" id="Uhz-uq-Bws"/>
                         <outlet property="chartView" destination="RTt-oi-qJ4" id="PFS-dh-rzM"/>
                         <outlet property="levelLabel" destination="UWy-7k-amI" id="SJM-dE-nk3"/>
                         <outlet property="levelSlider" destination="daJ-va-kf1" id="JD5-od-vY7"/>
