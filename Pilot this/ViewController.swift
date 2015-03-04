@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //Fetching from persistent storage
     
-    var products = [NSManagedObject]()
+    var products = [Product]()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,14 +35,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let managedContext = appDelegate.managedObjectContext!
         
         //2
-        let fetchRequest = NSFetchRequest(entityName:"Annotation")
+        let fetchRequest = NSFetchRequest(entityName:"Product")
         
         //3
         var error: NSError?
         
         let fetchedResults =
         managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as [NSManagedObject]?
+            error: &error) as [Product]?
+
         
         if let results = fetchedResults {
             products = results
@@ -63,7 +64,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as ProductTableViewCell
         
         let product = products[indexPath.row]
-        cell.textLabel!.text = product.valueForKey("name") as String?
+        cell.nameLabel.text = product.name
+        cell.daysLabel.text = "\(product.days)"
+        cell.picture.image = product.picture
         
         return cell
     }
