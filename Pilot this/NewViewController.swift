@@ -67,7 +67,20 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             var context = appDelegate.managedObjectContext!
             
+//            let entity =  NSEntityDescription.entityForName("Product", inManagedObjectContext: context)
+//            
+//            var product = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:context) as Product
             
+            var product = NSEntityDescription.insertNewObjectForEntityForName("Product", inManagedObjectContext: context) as Product
+            
+            product.name = productName.text
+            product.price = (productPrice.text as NSString).doubleValue
+            product.picture = pickedImage.image
+            
+            var error: NSError?
+            if !context.save(&error) {
+                displayAlert("Could not start pilot", message: "\(error?.userInfo)")
+            }
             
         } else {
             var message = ". ".join(errorMessages)
