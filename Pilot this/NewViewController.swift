@@ -80,6 +80,8 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             var error: NSError?
             if !context.save(&error) {
                 displayAlert("Could not start pilot", message: "\(error?.userInfo)")
+            } else {
+                self.navigationController!.popViewControllerAnimated(true)
             }
             
         } else {
