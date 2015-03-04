@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -48,6 +49,42 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         self.dismissViewControllerAnimated(true, completion: nil)
         pickedImage.image = image
         selectImageButton.setTitle("", forState: .Normal)
+    }
+    
+    
+    @IBAction func startPilot(sender: AnyObject) {
+        // Validation: name required, image and price optional
+        
+        var valid = true
+        var errorMessages = [String]()
+        
+        if productName.text.isEmpty {
+            valid = false
+            errorMessages += ["Please enter a name"]
+        }
+        
+        if valid {
+            var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            var context = appDelegate.managedObjectContext!
+            
+            
+            
+        } else {
+            var message = ". ".join(errorMessages)
+            displayAlert("This pilot is not ready", message: message)
+        }
+        
+    }
+    
+    func displayAlert(title: String, message: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
+            action in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        })
+        
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
     /*

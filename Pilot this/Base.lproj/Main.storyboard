@@ -420,6 +420,9 @@
                                         <state key="normal" title="I'm ready. Start Pilot!">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="startPilot:" destination="lGO-gd-hbl" eventType="touchUpInside" id="bWe-nd-BIE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -456,6 +459,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="AeM-kR-f2U">
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="t8A-6s-x6l">
+                            <connections>
+                                <action selector="startPilot:" destination="lGO-gd-hbl" id="rqd-ch-eOw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="pickedImage" destination="d5n-Jd-hFT" id="fKj-dN-vuQ"/>

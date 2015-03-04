@@ -47,8 +47,6 @@ class Product: NSManagedObject {
         return nil
     }
     
-    override func validateForInsert(error: NSErrorPointer) -> Bool {
-        return super.validateForInsert(error)
-    }
+
 
 }
