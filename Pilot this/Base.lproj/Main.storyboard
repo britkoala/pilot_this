@@ -22,12 +22,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PilotCell" id="hIM-Rq-2Tf">
+                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" id="hIM-Rq-2Tf" customClass="ProductTableViewCell" customModule="Pilot_this" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIM-Rq-2Tf" id="5fL-ZS-1Ak">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crocs.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-d7-fYk">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crocs.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-d7-fYk">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="Oad-ZR-1DK"/>
@@ -100,6 +100,9 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="daysLabel" destination="Odc-e6-g8o" id="dsk-q9-cwb"/>
+                                            <outlet property="nameLabel" destination="C8g-Gk-5hv" id="hSk-7V-JGP"/>
+                                            <outlet property="picture" destination="dOk-d7-fYk" id="whe-Z7-l03"/>
                                             <segue destination="PL4-Nv-KcG" kind="show" id="QqP-20-P5c"/>
                                         </connections>
                                     </tableViewCell>
