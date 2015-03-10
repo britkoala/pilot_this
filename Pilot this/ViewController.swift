@@ -25,6 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var products = [Product]()
     
+    @IBOutlet weak var productsTableView: UITableView!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -55,7 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //END: Fetching
     
     
-
+    // START: TableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
@@ -64,11 +66,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as ProductTableViewCell
         
         let product = products[indexPath.row]
-        cell.nameLabel.text = product.name
-        cell.daysLabel.text = "\(product.days)"
         cell.picture.image = product.picture
+        cell.nameLabel.text = product.name
+        cell.daysLabel.text = product.daysAsString()
+        
+
         
         return cell
+    }
+    // END: TableViewDelegate
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier! {
+        case "ShowProductDetails":
+            var detailsViewController = segue.destinationViewController as DetailsViewController
+            let indexPath = productsTableView.indexPathForSelectedRow()!
+            detailsViewController.product = products[indexPath.row]
+        default: break
+        }
     }
 
 }

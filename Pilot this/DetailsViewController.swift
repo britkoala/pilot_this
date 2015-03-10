@@ -14,6 +14,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var levelSlider: UISlider!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var addButton: UIButton!
+    
+    var product: Product!
     
     var lineChartView: JBLineChartView!
     
@@ -21,13 +24,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         lineChartView = JBLineChartView()
         lineChartView.dataSource = self
         lineChartView.delegate = self
-        self.chartView.addSubview(lineChartView)
-//        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width+50, chartView.frame.height)
-//        lineChartView.reloadData()
+        chartView.addSubview(lineChartView)
+        
+//        chartView.backgroundColor = UIColor(patternImage: product.picture!)
         
     }
 
@@ -36,7 +38,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    // JBLineChartViewDataSource
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // Resize chart view
+        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width, chartView.frame.height)
+        lineChartView.reloadData()
+    }
+    
+    // START: JBLineChartViewDataSource
     func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
         return 1
     }
@@ -44,13 +54,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func lineChartView(lineChartView: JBLineChartView!, numberOfVerticalValuesAtLineIndex lineIndex: UInt) -> UInt {
         return 7
     }
-    
     // END:JBLineChartViewDataSource
     
-    
-    
-    // JBLineChartViewDelegate
-    
+    // START: JBLineChartViewDelegate
     func lineChartView(lineChartView: JBLineChartView!, verticalValueForHorizontalIndex horizontalIndex: UInt, atLineIndex lineIndex: UInt) -> CGFloat {
         
         var value: CGFloat
@@ -80,12 +86,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func lineChartView(lineChartView: JBLineChartView!, colorForLineAtLineIndex lineIndex: UInt) -> UIColor! {
         return UIColor.whiteColor()
     }
-    
     // END: JBLineChartViewDelegate
     
     
     //Fetching from persistent storage
-    
     var annotations = [NSManagedObject]()
     
     override func viewWillAppear(animated: Bool) {
@@ -113,11 +117,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             println("Could not fetch \(error), \(error!.userInfo)")
         }
     }
-    
     //END: Fetching
     
     
-    
+    // START: TableViewDelegate and DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return annotations.count
     }
@@ -135,30 +138,18 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
+    // END: TableViewDelegate and DataSource
     
-    @IBAction func levelSliderChanged(sender: AnyObject) {
-        levelLabel.text = "\(Int(levelSlider.value))"
-    }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-
-//        lineChartView.frame = CGRectMake(0, 0, size.width - 32, lineChartView.frame.height)
-//        lineChartView.reloadData()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    @IBAction func levelSliderChanged(slider: UISlider) {
+        let intValue = Int(levelSlider.value + 0.5)
         
-        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width, chartView.frame.height)
-        lineChartView.reloadData()
+        slider.value = Float(intValue)
+        levelLabel.text = "\(intValue)"
+        addButton.setTitle(Annotation.levelName(intValue), forState: .Normal)
     }
     
-    @IBOutlet weak var addButton: UIButton!
-    
-    
-    @IBAction func sliderChanged(slider: UISlider) {
-        addButton.setTitle(Annotation.levelName(slider.value), forState: .Normal)
-    }
+
+
     
     /*
     // MARK: - Navigation

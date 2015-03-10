@@ -33,20 +33,32 @@ class Product: NSManagedObject {
     
     var days: Int? {
         if let unwrapped_created_at = created_at {
-        var calendar: NSCalendar = NSCalendar.currentCalendar()
-        
-        // Replace the hour (time) of both dates with 00:00
-//        let date1 = calendar.startOfDayForDate(created_at!)
-//        let date2 = calendar.startOfDayForDate(NSDate())
-        
-        let unit = NSCalendarUnit.DayCalendarUnit
-        let components = calendar.components(unit, fromDate: unwrapped_created_at, toDate: NSDate(), options: nil)
-        
-        return components.day  // This will return the number of day(s) between dates
+            var calendar: NSCalendar = NSCalendar.currentCalendar()
+            
+            let unit = NSCalendarUnit.DayCalendarUnit
+            let components = calendar.components(unit, fromDate: unwrapped_created_at, toDate: NSDate(), options: nil)
+            
+            return components.day  // This will return the number of day(s) between dates
         }
         return nil
     }
     
+    func daysAsString() -> String {
+        if let unwrapped_days = days {
+            switch unwrapped_days {
+            case 1: return "1 day" // Singular
+            default: return "\(unwrapped_days) days" // Plural: e.g. 0 days, 15 days
+            }
+        }
+        return "Unknown" // If days is nil
+    }
+    
+    // Set default values on insert
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        created_at = NSDate()
+    }
 
 
 }
