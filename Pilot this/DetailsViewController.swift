@@ -31,18 +31,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         chartView.addSubview(lineChartView)
         
         chartView.image = product.picture
-        chartView.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        var blurEffect = UIBlurEffect(style: .Light)
-        var blurView = UIVisualEffectView(effect: blurEffect)
-//        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        blurView.frame = chartView.frame
-        blurView.frame = CGRectMake(0, 0, chartView.frame.width, chartView.frame.height)
-//        lineChartView.addSubview(blurView)
-        
-
-        
-//        chartView.backgroundColor = UIColor(patternImage: product.picture!)
+//        chartView.contentMode = UIViewContentMode.ScaleAspectFill
         
     }
 

@@ -67,10 +67,6 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
             var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
             var context = appDelegate.managedObjectContext!
             
-//            let entity =  NSEntityDescription.entityForName("Product", inManagedObjectContext: context)
-//            
-//            var product = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:context) as Product
-            
             var product = NSEntityDescription.insertNewObjectForEntityForName("Product", inManagedObjectContext: context) as Product
             
             product.name = productName.text
@@ -91,7 +87,7 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         
     }
     
-    func displayAlert(title: String, message: String) {
+    private func displayAlert(title: String, message: String) {
         var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .Default) {

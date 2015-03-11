@@ -12,31 +12,21 @@ class ProductTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!
-    @IBOutlet weak var descriptionView: UIView!
-    
     @IBOutlet weak var picture: UIImageView!
     
-    var product: Product!
+    var product: Product! {
+        didSet(value){
+            // Update UI
+            picture.image = product.picture
+            nameLabel.text = product.name
+            daysLabel.text = product.daysAsString()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-                var blurEffect = UIBlurEffect(style: .Light)
-        //        var vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
-        var blurView = UIVisualEffectView(effect: blurEffect)
-        //        var vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-        //        blurView.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        blurView.frame = CGRectMake(0, 0, frame.width, descriptionView.frame.height)
-        //        vibrancyView.frame = blurView.frame
-        blurView.frame = descriptionView.bounds
-        println(blurView.frame)
-        println(descriptionView.frame)
-        //        blurView.center = chartView.center
-        //        nameLabel.insertSubview(vibrancyView, atIndex: 0)
-        
-        descriptionView.backgroundColor = UIColor(white: 0, alpha: 0.25)
-        descriptionView.insertSubview(blurView, atIndex: 0)
     }
 
 
