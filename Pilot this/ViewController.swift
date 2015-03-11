@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+//        productsTableView.setEditing(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,6 +74,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
         return cell
+    }
+    
+    // TableView Edit (Delete)
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+        }
     }
     // END: TableViewDelegate
     

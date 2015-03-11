@@ -22,12 +22,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" id="hIM-Rq-2Tf" customClass="ProductTableViewCell" customModule="Pilot_this" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProductCell" id="hIM-Rq-2Tf" customClass="ProductTableViewCell" customModule="Pilot_this" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIM-Rq-2Tf" id="5fL-ZS-1Ak">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crocs.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-d7-fYk">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crocs.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dOk-d7-fYk">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="Oad-ZR-1DK"/>
@@ -94,6 +94,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="daysLabel" destination="Odc-e6-g8o" id="dsk-q9-cwb"/>
+                                            <outlet property="descriptionView" destination="ml7-aQ-V8e" id="ZaI-ip-ruH"/>
                                             <outlet property="nameLabel" destination="C8g-Gk-5hv" id="hSk-7V-JGP"/>
                                             <outlet property="picture" destination="dOk-d7-fYk" id="whe-Z7-l03"/>
                                             <segue destination="PL4-Nv-KcG" kind="show" identifier="ShowProductDetails" id="QqP-20-P5c"/>
@@ -118,7 +119,7 @@
                     <navigationItem key="navigationItem" title="Pilots" id="32O-rY-BEa">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Cb9-vK-h1x">
                             <connections>
-                                <segue destination="lGO-gd-hbl" kind="show" id="vs3-xm-vsy"/>
+                                <segue destination="lGO-gd-hbl" kind="show" identifier="AddProduct" id="vs3-xm-vsy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -256,7 +257,7 @@
                                     <outlet property="delegate" destination="PL4-Nv-KcG" id="Fmp-sQ-FbX"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTt-oi-qJ4" customClass="UIImageView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTt-oi-qJ4" customClass="UIImageView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="185"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -310,23 +311,21 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="ksh-0e-KQC"/>
-                                <exclude reference="Ean-6B-RdP"/>
-                                <exclude reference="WrA-9I-YfG"/>
-                                <exclude reference="gEh-s2-xxt"/>
                                 <exclude reference="hBj-w0-WF6"/>
                                 <exclude reference="LLd-mv-Iqp"/>
                                 <exclude reference="cOi-zO-4tU"/>
                                 <exclude reference="iAW-7m-rIa"/>
                                 <exclude reference="uZm-T1-rbQ"/>
                                 <exclude reference="vjH-qa-eVu"/>
+                                <exclude reference="Ean-6B-RdP"/>
+                                <exclude reference="WrA-9I-YfG"/>
+                                <exclude reference="gEh-s2-xxt"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <exclude reference="BSr-co-fVC"/>
                                 <include reference="ksh-0e-KQC"/>
-                                <include reference="Ean-6B-RdP"/>
-                                <include reference="gEh-s2-xxt"/>
                                 <exclude reference="cEa-ft-qlV"/>
                                 <include reference="hBj-w0-WF6"/>
                                 <exclude reference="jv6-Op-1Hb"/>
@@ -337,6 +336,8 @@
                                 <exclude reference="pvh-On-fkx"/>
                                 <exclude reference="uZm-T1-rbQ"/>
                                 <exclude reference="vjH-qa-eVu"/>
+                                <include reference="Ean-6B-RdP"/>
+                                <include reference="gEh-s2-xxt"/>
                                 <exclude reference="XEf-mt-58m"/>
                             </mask>
                         </variation>
