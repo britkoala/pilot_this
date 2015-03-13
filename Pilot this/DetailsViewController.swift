@@ -31,7 +31,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         chartView.addSubview(lineChartView)
         
         chartView.image = product.picture
-//        chartView.contentMode = UIViewContentMode.ScaleAspectFill
         
     }
 
@@ -90,53 +89,18 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     // END: JBLineChartViewDelegate
     
-    
-    //Fetching from persistent storage
-    var annotations = [NSManagedObject]()
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //1
-        let appDelegate =
-        UIApplication.sharedApplication().delegate as AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName:"Annotation")
-        
-        //3
-        var error: NSError?
-        
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as [NSManagedObject]?
-        
-        if let results = fetchedResults {
-            annotations = results
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
-        }
-    }
-    //END: Fetching
-    
-    
     // START: TableViewDelegate and DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return annotations.count
+        return product.annotations.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         
-        //var cell = tableView.dequeueReusableCellWithIdentifier("CravingCell", forIndexPath: indexPath) as UITableViewCell
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier("CravingCell", forIndexPath: indexPath) as UITableViewCell
-        
-        //cell.textLabel?.text = "test"
-        
-        let annotation = annotations[indexPath.row]
-        cell.textLabel!.text = annotation.valueForKey("comment") as String?
+        var cell = tableView.dequeueReusableCellWithIdentifier("AnnotationCell", forIndexPath: indexPath) as AnnotationTableViewCell
+
+        let annotation = product.annotations.allObjects[indexPath.row] as Annotation
+        cell.annotation = annotation
         
         return cell
     }

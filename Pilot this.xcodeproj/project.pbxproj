@@ -27,6 +27,7 @@
 		CC9B1EF81A8161DF00A136A9 /* graph.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9B1EF71A8161DF00A136A9 /* graph.png */; };
 		CC9B1EFA1A81691B00A136A9 /* scale.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9B1EF91A81691B00A136A9 /* scale.png */; };
 		CC9B1EFC1A816A8000A136A9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9B1EFB1A816A8000A136A9 /* DetailsViewController.swift */; };
+		CCDBB9FA1AB39EE50041A10D /* AnnotationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBB9F91AB39EE50041A10D /* AnnotationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		CC9B1EF71A8161DF00A136A9 /* graph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = graph.png; sourceTree = "<group>"; };
 		CC9B1EF91A81691B00A136A9 /* scale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scale.png; sourceTree = "<group>"; };
 		CC9B1EFB1A816A8000A136A9 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		CCDBB9F91AB39EE50041A10D /* AnnotationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				CC8CAB701AA10FF90068E747 /* Annotation.swift */,
 				CC8CAB6E1AA105610068E747 /* Product.swift */,
 				7F8CE0C31AA7A0EB008B529E /* ProductTableViewCell.swift */,
+				CCDBB9F91AB39EE50041A10D /* AnnotationTableViewCell.swift */,
 			);
 			path = "Pilot this";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				CC7048371A8BEC7B000795DF /* JBBarChartView.m in Sources */,
 				7F2233361A8140E3007A7B65 /* AppDelegate.swift in Sources */,
 				CC8CAB6D1AA1047A0068E747 /* Model.xcdatamodeld in Sources */,
+				CCDBB9FA1AB39EE50041A10D /* AnnotationTableViewCell.swift in Sources */,
 				CC8CAB711AA10FF90068E747 /* Annotation.swift in Sources */,
 				7F8CE0C41AA7A0EB008B529E /* ProductTableViewCell.swift in Sources */,
 				CC7048381A8BEC7B000795DF /* JBChartView.m in Sources */,
