@@ -15,7 +15,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var picture: UIImageView!
     
     var product: Product! {
-        didSet(value){
+        didSet{
             // Update UI
             picture.image = product.picture
             nameLabel.text = product.name
