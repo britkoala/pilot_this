@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
 
         // Add button that toggles between edit and done
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
     }
     
@@ -66,12 +66,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
         }
+        if (products.count > 0){
+            self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        }
+        
     }
     //END: Fetching
     
     
     // START: TableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return products.count
     }
     
@@ -96,7 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    
+
     // Table View Commit Edit(Delete)
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -115,6 +120,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 products.removeAtIndex(indexPath.row)
                 productsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                
+                if (products.count == 0){
+                    self.navigationItem.leftBarButtonItem = nil
+                    self.setEditing(false, animated: true)
+                }
                 
             } else {
                 println(error)
