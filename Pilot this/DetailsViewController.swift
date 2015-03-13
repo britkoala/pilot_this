@@ -121,6 +121,43 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     //END: Fetching
     
+    //BEGIN: Inserting Annotation
+    @IBAction func addAnnotation(sender: AnyObject) {
+        
+        
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var context = appDelegate.managedObjectContext!
+        
+        var annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: context) as Annotation
+        
+        annotation.level = levelSlider.value
+        
+        var error: NSError?
+        if !context.save(&error) {
+            displayAlert("Could not add annotation", message: "\(error?.userInfo)")
+        } else {
+            
+            println("annotation \(annotation) added")
+        
+        }
+        
+        
+    }
+    
+    private func displayAlert(title: String, message: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
+            action in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+            })
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    //END: Inserting
+    
+    
     
     // START: TableViewDelegate and DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
