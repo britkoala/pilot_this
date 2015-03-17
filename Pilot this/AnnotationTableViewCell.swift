@@ -19,7 +19,11 @@ class AnnotationTableViewCell: UITableViewCell {
         didSet {
             levelDescription.text = annotation.levelName()
             levelLabel.text = "\(annotation.level.intValue)"
-            dateTimeLabel.text = "\(annotation.created_at)"
+            
+            var formatter = NSDateFormatter()
+            formatter.dateFormat = " dd/MM - hh:mm a"
+            
+            dateTimeLabel.text = formatter.stringFromDate(annotation.created_at)
             comment.text = annotation.comment
         }
     }

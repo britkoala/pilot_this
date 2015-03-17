@@ -12,7 +12,7 @@ import CoreData
 class Annotation: NSManagedObject {
 
     @NSManaged var level: NSNumber
-    @NSManaged var comment: String
+    @NSManaged var comment: String?
     @NSManaged var created_at: NSDate
     @NSManaged var product: Product
     
@@ -38,5 +38,11 @@ class Annotation: NSManagedObject {
         return Annotation.levelName(level)
     }
     
+    // Set default values on insert
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        
+        created_at = NSDate()
+    }
 
 }

@@ -16,6 +16,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var chartView: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     
+    @IBOutlet weak var annotationsTableView: UITableView!
+    
     var product: Product!
     
     var lineChartView: JBLineChartView!
@@ -124,6 +126,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         var annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: context) as Annotation
         
         annotation.level = levelSlider.value
+        annotation.product = product
+        product.annotations = product.annotations.setByAddingObject(annotation)
         
         var error: NSError?
         if !context.save(&error) {
@@ -132,6 +136,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             println("annotation \(annotation) added")
             
+            let newIndexPath = NSIndexPath(forRow: product.annotations.count - 1, inSection: 0)
+            annotationsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         
         
