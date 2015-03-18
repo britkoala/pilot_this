@@ -177,7 +177,9 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="levelEditingDidEnd:" destination="PL4-Nv-KcG" eventType="touchUpInside" id="5ZU-9O-Bva"/>
                                     <action selector="levelSliderChanged:" destination="PL4-Nv-KcG" eventType="valueChanged" id="LsA-3h-rRv"/>
+                                    <action selector="levelSliderEditingDidEnd:" destination="PL4-Nv-KcG" eventType="editingDidEnd" id="2ZZ-My-5JN"/>
                                 </connections>
                             </slider>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uUP-hd-0sV">

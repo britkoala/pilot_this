@@ -34,6 +34,13 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         chartView.image = product.picture
         
+        // Glow effect
+        addButton.layer.shadowColor = addButton.titleLabel?.textColor.CGColor
+        addButton.layer.shadowOffset = CGSizeMake(0.0, 0.0)
+        addButton.layer.shadowRadius = 0
+        addButton.layer.shadowOpacity = 0.5
+        addButton.layer.masksToBounds = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,12 +115,44 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     // END: TableViewDelegate and DataSource
     
+    
     @IBAction func levelSliderChanged(slider: UISlider) {
         let intValue = Int(levelSlider.value + 0.5)
         
         slider.value = Float(intValue)
         levelLabel.text = "\(intValue)"
         addButton.setTitle(Annotation.levelName(intValue), forState: .Normal)
+        
+    }
+    
+    // Animate when the user stops editing the levelSlider
+    @IBAction func levelEditingDidEnd(sender: UISlider) {
+        
+        // TO YAYO: Choose which animation you like: glow or jump
+        glowAnimation()
+        jumpAnimation()
+        
+    }
+    
+    // Glow animation for addButton
+    func glowAnimation() {
+        var glowAnimation = CABasicAnimation(keyPath: "shadowRadius")
+        glowAnimation.fromValue = 8
+        glowAnimation.toValue = 0
+        glowAnimation.duration = 0.7
+        addButton.layer.addAnimation(glowAnimation, forKey: "glow")
+    }
+    
+    // Jump animation for addButton
+    func jumpAnimation() {
+        var jumpAnimation = CAKeyframeAnimation(keyPath: "position.y")
+        let jumpOffset = 2
+        jumpAnimation.values = [0, -jumpOffset, 0, jumpOffset, 0, -jumpOffset, 0]
+//        jumpAnimation.keyTimes = [0, (1/6), (3/6), (5/6), 1] // This doesn't seem to work
+        jumpAnimation.duration = 0.4
+        jumpAnimation.additive = true
+        addButton.layer.addAnimation(jumpAnimation, forKey: "jump")
+        
     }
     
     //BEGIN: Inserting Annotation
@@ -127,14 +166,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         annotation.level = levelSlider.value
         annotation.product = product
-        product.annotations = product.annotations.setByAddingObject(annotation)
+//        product.annotations = product.annotations.append(annotation)
+        
         
         var error: NSError?
         if !context.save(&error) {
             displayAlert("Could not add annotation", message: "\(error?.userInfo)")
         } else {
             
-            println("annotation \(annotation) added")
+            println("Annotation with level \(annotation.level) added")
             
             let newIndexPath = NSIndexPath(forRow: product.annotations.count - 1, inSection: 0)
             annotationsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
