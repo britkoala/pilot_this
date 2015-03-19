@@ -218,12 +218,16 @@
                                                     </constraints>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
                                                             <exclude reference="1Yf-EQ-8HU"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="commentEditingBegin:" destination="KWr-yO-rqx" eventType="editingDidBegin" id="FB1-hZ-tRi"/>
+                                                        <action selector="commentEditingEnd:" destination="KWr-yO-rqx" eventType="editingDidEnd" id="0yn-m8-bsQ"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I don't know, I may need it" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9Q-gb-7qH">
                                                     <rect key="frame" x="8" y="28" width="535" height="24"/>
@@ -262,6 +266,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="comment" destination="xWN-qJ-rMN" id="mLI-D6-1fV"/>
                                             <outlet property="dateTimeLabel" destination="CFR-F9-i9W" id="RLj-12-BFP"/>

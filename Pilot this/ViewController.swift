@@ -86,14 +86,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let product = products[indexPath.row]
         cell.product = product
         
-        /* gutivg: Assignments moved to ProductTableViewCell. Elements updated when product is set.
-        
-//        cell.picture.image = product.picture
-//        cell.nameLabel.text = product.name
-//        cell.daysLabel.text = product.daysAsString()
-        
-        */
-        
         return cell
     }
     
@@ -101,6 +93,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+    
+    // Show multiple options when the user swipes horizontally on a cell
+    /*func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        
+        var moreAction = UITableViewRowAction(style: .Normal, title: "More") { action, indexPath in
+            println("More action on indexPath: \(indexPath)")
+        }
+        
+        var deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { action, indexPath in
+            println("Delete action on indexPath: \(indexPath)")
+        }
+        
+        return [deleteAction, moreAction]
+        
+    }*/
 
     // Table View Commit Edit(Delete)
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

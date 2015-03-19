@@ -87,16 +87,6 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         
     }
     
-    private func displayAlert(title: String, message: String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
-            action in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-        })
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
 
     /*
     // MARK: - Navigation

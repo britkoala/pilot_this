@@ -18,9 +18,17 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var annotationsTableView: UITableView!
     
-    var product: Product!
-    
     var lineChartView: JBLineChartView!
+    
+    var product: Product! {
+        didSet {
+            // Sort annotations (most recent first) and store them as an Array
+            annotations = product.annotations.allObjects as [Annotation]
+            annotations.sort { $0.created_at.compare($1.created_at) == NSComparisonResult.OrderedDescending }
+        }
+    }
+    
+    var annotations: [Annotation]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +108,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // START: TableViewDelegate and DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return product.annotations.count
+        return annotations.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -108,8 +116,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var cell = tableView.dequeueReusableCellWithIdentifier("AnnotationCell", forIndexPath: indexPath) as AnnotationTableViewCell
 
-        let annotation = product.annotations.allObjects[indexPath.row] as Annotation
-        cell.annotation = annotation
+        cell.annotation = annotations[indexPath.row]
+        cell.viewController = self      // ViewController necesary to show alert
         
         return cell
     }
@@ -166,7 +174,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         annotation.level = levelSlider.value
         annotation.product = product
-//        product.annotations = product.annotations.append(annotation)
         
         
         var error: NSError?
@@ -176,23 +183,18 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             println("Annotation with level \(annotation.level) added")
             
-            let newIndexPath = NSIndexPath(forRow: product.annotations.count - 1, inSection: 0)
+            // Insert annotations on array
+            annotations.insert(annotation, atIndex: 0)
+            
+            
+            // Insert annotation cell on the table
+            let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
             annotationsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         
         
     }
-    
-    private func displayAlert(title: String, message: String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default) {
-            action in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-            })
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+
     
     //END: Inserting
 
@@ -208,3 +210,4 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     */
 
 }
+

@@ -18,6 +18,7 @@
 		7F61D1A81A8BE76A000D9DED /* laptopcase.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F61D1A71A8BE76A000D9DED /* laptopcase.png */; };
 		7F61D1AA1A8BEF75000D9DED /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61D1A91A8BEF75000D9DED /* NewViewController.swift */; };
 		7F8CE0C41AA7A0EB008B529E /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8CE0C31AA7A0EB008B529E /* ProductTableViewCell.swift */; };
+		CC5A25D61ABA862700AD8B91 /* DisplayAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5A25D51ABA862700AD8B91 /* DisplayAlert.swift */; };
 		CC7048371A8BEC7B000795DF /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048321A8BEC7B000795DF /* JBBarChartView.m */; };
 		CC7048381A8BEC7B000795DF /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048341A8BEC7B000795DF /* JBChartView.m */; };
 		CC7048391A8BEC7B000795DF /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048361A8BEC7B000795DF /* JBLineChartView.m */; };
@@ -56,6 +57,7 @@
 		7F61D1A71A8BE76A000D9DED /* laptopcase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laptopcase.png; sourceTree = "<group>"; };
 		7F61D1A91A8BEF75000D9DED /* NewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		7F8CE0C31AA7A0EB008B529E /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		CC5A25D51ABA862700AD8B91 /* DisplayAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayAlert.swift; sourceTree = "<group>"; };
 		CC7048311A8BEC7B000795DF /* JBBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartView.h; sourceTree = "<group>"; };
 		CC7048321A8BEC7B000795DF /* JBBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartView.m; sourceTree = "<group>"; };
 		CC7048331A8BEC7B000795DF /* JBChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartView.h; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				CC8CAB6E1AA105610068E747 /* Product.swift */,
 				7F8CE0C31AA7A0EB008B529E /* ProductTableViewCell.swift */,
 				CCDBB9F91AB39EE50041A10D /* AnnotationTableViewCell.swift */,
+				CC5A25D51ABA862700AD8B91 /* DisplayAlert.swift */,
 			);
 			path = "Pilot this";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				CC7048391A8BEC7B000795DF /* JBLineChartView.m in Sources */,
 				CC8CAB6F1AA105610068E747 /* Product.swift in Sources */,
 				CC7048371A8BEC7B000795DF /* JBBarChartView.m in Sources */,
+				CC5A25D61ABA862700AD8B91 /* DisplayAlert.swift in Sources */,
 				7F2233361A8140E3007A7B65 /* AppDelegate.swift in Sources */,
 				CC8CAB6D1AA1047A0068E747 /* Model.xcdatamodeld in Sources */,
 				CCDBB9FA1AB39EE50041A10D /* AnnotationTableViewCell.swift in Sources */,
