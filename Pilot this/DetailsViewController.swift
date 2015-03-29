@@ -31,7 +31,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var annotations: [Annotation]!
     
-    // MARK: View Controller Life Cicle
+    // MARK: ViewController Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -151,7 +151,41 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-
+    
+    // TableView Allow Edit(Delete)
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    // Table View Commit Edit(Delete)
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
+            
+            // Get shared context
+            let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+            var context = appDelegate.managedObjectContext!
+            
+            // Set product for deletion
+            context.deleteObject(annotations[indexPath.row])
+            
+            // Save context
+            var error: NSError?
+            if context.save(&error) {
+                
+                annotations.removeAtIndex(indexPath.row)
+                annotationsTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                
+                if (annotations.count == 0){
+                    //self.navigationItem.leftBarButtonItem = nil
+                    self.setEditing(false, animated: true)
+                }
+                
+            } else {
+                println(error)
+            }
+        }
+    }
     
     // MARK: Target Actions
     @IBAction func levelSliderChanged(slider: UISlider) {
@@ -223,9 +257,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
-
-    
-
     
     /*
     // MARK: - Navigation
