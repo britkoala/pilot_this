@@ -22,6 +22,7 @@
 		CC7048371A8BEC7B000795DF /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048321A8BEC7B000795DF /* JBBarChartView.m */; };
 		CC7048381A8BEC7B000795DF /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048341A8BEC7B000795DF /* JBChartView.m */; };
 		CC7048391A8BEC7B000795DF /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7048361A8BEC7B000795DF /* JBLineChartView.m */; };
+		CC81A6E21AC74346003EE7AA /* AutoresizableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81A6E11AC74346003EE7AA /* AutoresizableTableView.swift */; };
 		CC8CAB6D1AA1047A0068E747 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC8CAB6B1AA1047A0068E747 /* Model.xcdatamodeld */; };
 		CC8CAB6F1AA105610068E747 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CAB6E1AA105610068E747 /* Product.swift */; };
 		CC8CAB711AA10FF90068E747 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CAB701AA10FF90068E747 /* Annotation.swift */; };
@@ -65,6 +66,7 @@
 		CC7048351A8BEC7B000795DF /* JBLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartView.h; sourceTree = "<group>"; };
 		CC7048361A8BEC7B000795DF /* JBLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartView.m; sourceTree = "<group>"; };
 		CC70483A1A8BEC93000795DF /* JBChartView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "JBChartView-Bridging-Header.h"; path = "Pilot this/JBChartView-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		CC81A6E11AC74346003EE7AA /* AutoresizableTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoresizableTableView.swift; sourceTree = "<group>"; };
 		CC8CAB6C1AA1047A0068E747 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CC8CAB6E1AA105610068E747 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		CC8CAB701AA10FF90068E747 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		7F2233321A8140E3007A7B65 /* Pilot this */ = {
 			isa = PBXGroup;
 			children = (
+				CC81A6E01AC742C3003EE7AA /* Views */,
 				7F2233351A8140E3007A7B65 /* AppDelegate.swift */,
 				7F2233371A8140E3007A7B65 /* ViewController.swift */,
 				CC9B1EFB1A816A8000A136A9 /* DetailsViewController.swift */,
@@ -174,6 +177,14 @@
 				CC7048361A8BEC7B000795DF /* JBLineChartView.m */,
 			);
 			path = JBChartView;
+			sourceTree = "<group>";
+		};
+		CC81A6E01AC742C3003EE7AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC81A6E11AC74346003EE7AA /* AutoresizableTableView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +297,7 @@
 				CC7048391A8BEC7B000795DF /* JBLineChartView.m in Sources */,
 				CC8CAB6F1AA105610068E747 /* Product.swift in Sources */,
 				CC7048371A8BEC7B000795DF /* JBBarChartView.m in Sources */,
+				CC81A6E21AC74346003EE7AA /* AutoresizableTableView.swift in Sources */,
 				CC5A25D61ABA862700AD8B91 /* DisplayAlert.swift in Sources */,
 				7F2233361A8140E3007A7B65 /* AppDelegate.swift in Sources */,
 				CC8CAB6D1AA1047A0068E747 /* Model.xcdatamodeld in Sources */,

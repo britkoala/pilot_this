@@ -11,12 +11,13 @@ import CoreData
 
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, JBLineChartViewDataSource, JBLineChartViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var levelSlider: UISlider!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var chartView: UIImageView!
     @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var annotationsTableView: UITableView!
+    @IBOutlet weak var annotationsTableView: AutoresizableTableView!
     
     var lineChartView: JBLineChartView!
     
@@ -30,10 +31,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var annotations: [Annotation]!
     
+    // MARK: View Controller Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup Chart
         lineChartView = JBLineChartView()
         lineChartView.dataSource = self
         lineChartView.delegate = self
@@ -49,11 +51,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         addButton.layer.shadowOpacity = 0.5
         addButton.layer.masksToBounds = false
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        //Keyboard Notifications
+        registerForKeyboardNotifications()
+        
+        // Dismiss Keyboard on Touch
+        let keyboardDismisalGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(keyboardDismisalGesture)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -64,7 +69,34 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         lineChartView.reloadData()
     }
     
-    // START: JBLineChartViewDataSource
+    // MARK: Dismiss keyboard
+    func dismissKeyboard() {
+        view.endEditing(false)
+    }
+    
+    // MARK: Keyboard Notifications
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var info = notification.userInfo!
+        var keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().size
+        
+        let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsetsZero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    
+    // MARK: JBLineChartViewDataSource
     func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
         return 1
     }
@@ -72,9 +104,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func lineChartView(lineChartView: JBLineChartView!, numberOfVerticalValuesAtLineIndex lineIndex: UInt) -> UInt {
         return 7
     }
-    // END:JBLineChartViewDataSource
     
-    // START: JBLineChartViewDelegate
+    // MARK: JBLineChartViewDelegate
     func lineChartView(lineChartView: JBLineChartView!, verticalValueForHorizontalIndex horizontalIndex: UInt, atLineIndex lineIndex: UInt) -> CGFloat {
         
         var value: CGFloat
@@ -104,9 +135,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func lineChartView(lineChartView: JBLineChartView!, colorForLineAtLineIndex lineIndex: UInt) -> UIColor! {
         return UIColor.whiteColor()
     }
-    // END: JBLineChartViewDelegate
     
-    // START: TableViewDelegate and DataSource
+    // MARK: TableViewDelegate and DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return annotations.count
     }
@@ -121,9 +151,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-    // END: TableViewDelegate and DataSource
+
     
-    
+    // MARK: Target Actions
     @IBAction func levelSliderChanged(slider: UISlider) {
         let intValue = Int(levelSlider.value + 0.5)
         
@@ -163,7 +193,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    //BEGIN: Inserting Annotation
+    // Inserting Annotation
     @IBAction func addAnnotation(sender: AnyObject) {
         
         
@@ -192,11 +222,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             annotationsTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
         
-        
     }
 
     
-    //END: Inserting
 
     
     /*

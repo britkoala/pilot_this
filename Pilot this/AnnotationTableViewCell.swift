@@ -60,7 +60,7 @@ class AnnotationTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        comment.endEditing(false)
+        textField.resignFirstResponder()
         return true
     }
 
