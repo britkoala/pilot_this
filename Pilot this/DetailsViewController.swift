@@ -168,7 +168,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // TO YAYO: Choose which animation you like: glow or jump
         glowAnimation()
-        jumpAnimation()
+        //jumpAnimation()
         
     }
     
