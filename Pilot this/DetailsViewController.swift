@@ -84,13 +84,16 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         var info = notification.userInfo!
         var keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().size
         
-        let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        // Set the scrollView's content inset
+        // The top inset avoids the content to be hidden under the nav bar and the bottom inset avoids the keyboard
+        let contentInsets = UIEdgeInsetsMake(scrollView.contentInset.top, 0, keyboardSize.height, 0)
+        
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        let contentInsets = UIEdgeInsetsZero
+        let contentInsets = UIEdgeInsetsMake(scrollView.contentInset.top, 0, 0, 0)
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
@@ -199,11 +202,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // Animate when the user stops editing the levelSlider
     @IBAction func levelEditingDidEnd(sender: UISlider) {
-        
-        // TO YAYO: Choose which animation you like: glow or jump
         glowAnimation()
-        //jumpAnimation()
-        
     }
     
     // Glow animation for addButton
@@ -257,16 +256,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
