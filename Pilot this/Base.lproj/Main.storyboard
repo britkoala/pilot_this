@@ -181,7 +181,7 @@
                                         <color key="textColor" red="0.10832093249999999" green="0.10832093249999999" blue="0.10832093249999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleAspectFit" verticalCompressionResistancePriority="760" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uUP-hd-0sV" customClass="AutoresizableTableView" customModule="Pilot_this" customModuleProvider="target">
+                                    <tableView contentMode="scaleAspectFit" verticalCompressionResistancePriority="760" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uUP-hd-0sV" customClass="AutoresizableTableView" customModule="Pilot_this" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="219" width="600" height="400"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -311,18 +311,18 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Fik-Kz-aPt"/>
                                         <exclude reference="0DK-X8-L9z"/>
                                         <exclude reference="EUp-2Z-epL"/>
+                                        <exclude reference="Fik-Kz-aPt"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="Fik-Kz-aPt"/>
                                         <include reference="0DK-X8-L9z"/>
                                         <include reference="EUp-2Z-epL"/>
                                         <exclude reference="dpA-Au-acI"/>
                                         <exclude reference="twz-be-J1H"/>
+                                        <include reference="Fik-Kz-aPt"/>
                                         <exclude reference="eof-EG-tEh"/>
                                     </mask>
                                 </variation>

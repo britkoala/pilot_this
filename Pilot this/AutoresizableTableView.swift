@@ -12,15 +12,13 @@ class AutoresizableTableView: UITableView {
     var heightConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
-        heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1000, constant: 200)
+        heightConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1000, constant: 0)
         addConstraint(heightConstraint)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        heightConstraint?.constant = max(self.contentSize.height, 200)
-        
-
+        heightConstraint?.constant = self.contentSize.height
     }
 }
 
