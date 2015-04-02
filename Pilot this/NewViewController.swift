@@ -46,68 +46,28 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     // MARK: Keyboard Notifications
     func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardDidShowNotification, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func keyboardDidChangeFrame(notification: NSNotification){
-        println("-------------------")
-        
-        let info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().size
-        println("Keyboard size: \(keyboardSize)")
-        
-        let viewHeight = view.frame.height
-        println("View height: \(viewHeight)")
-        
-        let visibleHeight = viewHeight - keyboardSize.height
-        println("Visible height: \(visibleHeight)")
-        
-        let contentHeight = pickedImage.frame.origin.y + pickedImage.frame.height
-        println("Content height: \(contentHeight)")
-        
-        // Move the content up if its not visible
-        if visibleHeight < contentHeight {
-            let delta = contentHeight - visibleHeight
-            println("Delta: \(delta)")
-            
-            bottomConstraint.constant = -delta // Move descriptionView up
-            
-            // Animate constraint change
-            UIView.animateWithDuration(0.5) {
-                self.view.layoutIfNeeded()
-            }
-        } else if bottomConstraint.constant != 0 {
-            bottomConstraint.constant = 0 // Return descriptionView to its original place
-            
-            // Animate constraint change
-            UIView.animateWithDuration(0.5) {
-                self.view.layoutIfNeeded()
-            }
-        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func keyboardWillShow(notification: NSNotification) {
         let info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size
+        let keyboardFrame = (info[UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue()
+        let duration = info[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue
         
-        let visibleHeight = view.frame.height - keyboardSize.height
+        let visibleHeight = keyboardFrame.origin.y
         
-        let contentHeight = descriptionView.frame.origin.y + descriptionView.frame.height
+        let contentHeight = pickedImage.frame.origin.y + pickedImage.frame.height
         
         // Move the content up if its not visible
-        if visibleHeight < contentHeight {
+        if visibleHeight <= contentHeight {
             let delta = contentHeight - visibleHeight
-            println("Delta: \(delta)")
             
             bottomConstraint.constant = delta // Move descriptionView up
             
             // Animate constraint change
-            UIView.animateWithDuration(1) {
+            UIView.animateWithDuration(duration) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -115,10 +75,13 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
 
     func keyboardWillHide(notification: NSNotification) {
         if bottomConstraint.constant != 0 {
+            let info = notification.userInfo!
+            let duration = (info[UIKeyboardAnimationDurationUserInfoKey])!.doubleValue
+
             bottomConstraint.constant = 0 // Return descriptionView to its original place
             
             // Animate constraint change
-            UIView.animateWithDuration(0.5) {
+            UIView.animateWithDuration(duration) {
                 self.view.layoutIfNeeded()
             }
         }
@@ -155,7 +118,6 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     
     // MARK: Start Pilot
-    
     @IBAction func startPilot(sender: AnyObject) {
         // Validation: name required, image and price optional
         
@@ -190,18 +152,5 @@ class NewViewController: UIViewController, UIImagePickerControllerDelegate, UINa
         }
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
 
 }
