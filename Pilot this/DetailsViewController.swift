@@ -14,12 +14,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var levelSlider: UISlider!
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var chartView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var addButton: UIButton!
-    
+    @IBOutlet weak var lineChartView: JBLineChartView!
     @IBOutlet weak var annotationsTableView: AutoresizableTableView!
-    
-    var lineChartView: JBLineChartView!
     
     var product: Product! {
         didSet {
@@ -36,13 +34,14 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Setup Chart
-        lineChartView = JBLineChartView()
+//        lineChartView = JBLineChartView()
         lineChartView.dataSource = self
         lineChartView.delegate = self
-        lineChartView.backgroundColor = UIColor(white: 0, alpha: 0.25)
-        chartView.addSubview(lineChartView)
+//        lineChartView.backgroundColor = UIColor(white: 0, alpha: 0.25)
+//        imageView.addSubview(lineChartView)
+        lineChartView.reloadData()
         
-        chartView.image = product.picture
+        imageView.image = product.picture
         
         // Glow effect
         addButton.layer.shadowColor = addButton.titleLabel?.textColor.CGColor
@@ -65,8 +64,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLayoutSubviews()
         
         // Resize chart view
-        lineChartView.frame = CGRectMake(0, 0, chartView.frame.width, chartView.frame.height)
+//        lineChartView.frame = imageView.bounds
         lineChartView.reloadData()
+        
     }
     
     // MARK: Dismiss keyboard
@@ -99,7 +99,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    // MARK: JBLineChartViewDataSource
+    // MARK: JBLineChartViewDataSource and Delegate
     func numberOfLinesInLineChartView(lineChartView: JBLineChartView!) -> UInt {
         return 1
     }
@@ -108,7 +108,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 7
     }
     
-    // MARK: JBLineChartViewDelegate
     func lineChartView(lineChartView: JBLineChartView!, verticalValueForHorizontalIndex horizontalIndex: UInt, atLineIndex lineIndex: UInt) -> CGFloat {
         
         var value: CGFloat
