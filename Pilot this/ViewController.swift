@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var products = [Product]()
     
+    // MARK: ViewController Life Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -33,11 +34,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         addButton.enabled = !editing // Disable addButton when editing
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //Fetching from persistent storage
@@ -74,9 +70,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //END: Fetching
     
     
-    // START: TableViewDelegate
+    // MARK: TableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        if products.count == 0 {
+            // Show placeholder
+            var placeholderLabel = UILabel(frame: productsTableView.bounds)
+            
+            placeholderLabel.text = "To add a new pilot, press the '+'\nbutton on the top right corner."
+            placeholderLabel.textColor = UIColor.blackColor()
+            placeholderLabel.numberOfLines = 0
+            placeholderLabel.textAlignment = NSTextAlignment.Center
+            placeholderLabel.font = UIFont(name: "Palatino-Italic", size: 20)
+            placeholderLabel.sizeToFit()
+            
+            productsTableView.backgroundView = placeholderLabel
+            
+        } else {
+            // Remove placeholder
+            productsTableView.backgroundView = nil
+        }
+        
         return products.count
     }
     
